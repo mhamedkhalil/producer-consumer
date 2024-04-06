@@ -1,0 +1,21 @@
+### This small project is a simulation for the producer consumer approach to access shared memory segment.
+
+## Description:
+
+The project includes two different files: "producer.cpp", and "consumer.cpp".
+Each process accesses a shared memory between them with a unique name, created by the process that starts first. 
+The processes then map this shared memory segment to their local memory and resize the memory to fit 10 integers. 
+(Please note that this is a statis example and we can always change the size allocated to the shared memory and the data type stored in it).
+The processes use semaphores to maintain mutual exclusion to critical section. (Semaphore created by one of the processes and initialized to 1 for mutual exclusion).
+The producer will generate integers and place them in the shared memory (checks for space availability first), and the consumer will consume these integers by overwriting them to 0 after checking the availability of an object to consume. 
+
+## Language used and OS:
+The project is fully done with C++ language on a Linux/Unix environment. 
+
+## How to run it:
+To run the project, you need to be using a linux environment (VM, or a whole OS).
+You need to run these commands in your terminal:
+$gcc producer.cpp -pthread -lrt -o producer -lstdc++
+$gcc consumer.cpp -pthread -lrt -o consumer -lstdc++
+$./producer & ./consumer &
+(The additional "-lstdc++" is necessary as the language used is C++ and not C).
